@@ -2,8 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Collection;
+use App\Models\Compilation;
+use App\Models\Instrument;
+use App\Models\Piece;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +18,65 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Admin user with data
+        $admin = User::factory()
+            ->admin()
+            ->create([
+                'name' => 'Admin',
+                'email' => 'admin@admin.com',
+                'password' => bcrypt('admin'),
+            ]);
+        $this->seedUserMusicData($admin);
+
+        // Normal user with data
+        $user = User::factory()->create([
+            'name' => 'User',
+            'email' => 'user@user.com',
+        ]);
+        $this->seedUserMusicData($user);
+
+        // Empty user (no data)
+        User::factory()->create([
+            'name' => 'User 2',
+            'email' => 'user2@user.com',
+        ]);
+    }
+
+
+    /**
+     * Seed a full music data set for a given user.
+     */
+    private function seedUserMusicData(User $user): void
+    {
+        $instruments = Instrument::factory(3)->create([
+            'user_id' => $user->id,
+        ]);
+
+        foreach ($instruments as $instrument) {
+            $collections = Collection::factory(2)->create([
+                'user_id' => $user->id,
+                'instrument_id' => $instrument->id,
+            ]);
+
+            foreach ($collections as $collection) {
+                Piece::factory(5)->create([
+                    'collection_id' => $collection->id,
+                ]);
+            }
+        }
+
+        $compilations = Compilation::factory(2)->create([
+            'user_id' => $user->id,
+        ]);
+
+        $allPieces = Piece::whereHas('collection', function (Builder $query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->get();
+
+        foreach ($compilations as $compilation) {
+            $compilation->pieces()->attach(
+                $allPieces->random(5)->pluck('id')
+            );
+        }
     }
 }
