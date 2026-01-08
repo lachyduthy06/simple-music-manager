@@ -48,9 +48,19 @@ class DatabaseSeeder extends Seeder
      */
     private function seedUserMusicData(User $user): void
     {
-        $instruments = Instrument::factory(3)->create([
-            'user_id' => $user->id,
-        ]);
+        $instrumentNames = ['Guitar', 'Trumpet', 'Piano', 'Keyboard', 'Drum', 'Accordion', 'Bongo', 'Violin', 'Saxophone'];
+
+        $instruments = collect($instrumentNames)
+            ->shuffle()
+            ->take(3)
+            ->values()
+            ->map(fn ($name, $index) =>
+                Instrument::factory()->create([
+                    'user_id' => $user->id,
+                    'name' => $name,
+                    'sort' => $index,
+                ])
+            );
 
         foreach ($instruments as $instrument) {
             $collections = Collection::factory(2)->create([
