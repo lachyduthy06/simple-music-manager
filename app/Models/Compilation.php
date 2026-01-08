@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use App\Enums\CompilationStatus;
+use App\Models\Scopes\OwnedByUserScope;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+#[ScopedBy([OwnedByUserScope::class])]
 class Compilation extends Model
 {
     /** @use HasFactory<\Database\Factories\CompilationFactory> */
