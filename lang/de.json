@@ -48,6 +48,8 @@
 
     "Collection": "Ordner",
     "Collections": "Ordner",
+    "Compilation": "Playlist",
+    "Compilations": "Playlists",
     "Create": "Erstellen",
     "Created at": "Erstellt am",
     "Email": "E-Mail",
@@ -56,11 +58,15 @@
     "Move down": "Nach unten",
     "Move to another collection": "In anderen Ordner verschieben",
     "Move up": "Nach oben",
-    "Piece": "Song",
-    "Pieces": "Songs",
+    "No pieces available.": "Keine Stücke verfügbar.",
+    "Not playable yet": "Noch nicht spielbar",
+    "Notes": "Notizen",
+    "Piece": "Stück",
+    "Pieces": "Stücke",
+    "Playable": "Spielbar",
     "Target collection": "Zielordner",
     "Updated at": "Aktualisiert am",
     "User": "Benutzer",
     "Users": "Benutzer",
-    "Notes": "Notizen"
+    "Working on it": "In Arbeit"
 }

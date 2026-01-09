@@ -39,8 +39,8 @@ class Instrument extends Model
             if (Auth::check()) {
                 $instrument->user_id = auth()->id();
 
-                // Set initial sort value to the MAX(sort) + 1
-                $instrument->sort = static::where('user_id', $instrument->user_id)->max('sort') + 1;
+                // Set initial sort value to 0 or MAX(sort)+1
+                $instrument->sort = (static::where('user_id', $instrument->user_id)->max('sort') ?? -1) + 1;
                 // this also works with no instruments existing (because "null + 1" is "1")
             }
         });

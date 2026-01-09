@@ -7,6 +7,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -74,5 +75,17 @@ class User extends Authenticatable implements FilamentUser
     public function compilations(): HasMany
     {
         return $this->hasMany(Compilation::class);
+    }
+
+    public function pieces(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            Piece::class,       // Final model
+            Collection::class,  // Intermediate model
+            'user_id',          // Foreign key on collections table
+            'collection_id',    // Foreign key on pieces table
+            'id',               // Local key on users table
+            'id'                // Local key on collections table
+        );
     }
 }

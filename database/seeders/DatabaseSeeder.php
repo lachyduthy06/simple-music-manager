@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
                 Instrument::factory()->create([
                     'user_id' => $user->id,
                     'name' => $name,
-                    'sort' => $index,
+                    'sort' => $index, // 0, 1, ...
                 ])
             );
 
@@ -78,24 +78,31 @@ class DatabaseSeeder extends Seeder
                     ->count(5)
                     ->sequence(fn (Sequence $sequence) => [
                         'collection_id' => $collection->id,
-                        'sort' => $sequence->index,
+                        'sort' => $sequence->index, // 0, 1, ...
                     ])
                     ->create();
             }
         }
 
-        $compilations = Compilation::factory(2)->create([
-            'user_id' => $user->id,
-        ]);
+        $compilations = Compilation::factory()
+            ->count(2)
+            ->sequence(fn (Sequence $sequence) => [
+                'user_id' => $user->id,
+                'sort' => $sequence->index, // 0, 1, ...
+            ])
+            ->create();
 
         $allPieces = Piece::whereHas('collection', function (Builder $query) use ($user) {
             $query->where('user_id', $user->id);
         })->get();
 
         foreach ($compilations as $compilation) {
-            $compilation->pieces()->attach(
-                $allPieces->random(5)->pluck('id')
-            );
+            $randomPieces = $allPieces->random(5);
+            $syncData = [];
+            foreach ($randomPieces as $index => $piece) {
+                $syncData[$piece->id] = ['sort' => $index]; // set pivot sort
+            }
+            $compilation->pieces()->attach($syncData);
         }
     }
 }

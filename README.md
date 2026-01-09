@@ -30,7 +30,7 @@ The app uses:
 - a [Docker Compose](https://docs.docker.com/compose/) setup based on the [official Docker+Laravel setup example](https://docs.docker.com/guides/frameworks/laravel/)
 - [Laravel](https://laravel.com/) 12 on [PHP](https://www.php.net/) 8.4
 - [Filament](https://filamentphp.com/) 4 for the backend
-- [Livewire](https://livewire.laravel.com/) 3, [Flux UI](https://fluxui.dev/) 2 and  [Tailwind CSS](https://tailwindcss.com/) 4 for the frontend
+- [Laravel Blade](https://laravel.com/docs/12.x/blade) Templates and [Tailwind CSS](https://tailwindcss.com/) 4 for the frontend
 
 ## Maintenance
 

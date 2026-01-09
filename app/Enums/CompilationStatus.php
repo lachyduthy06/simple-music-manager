@@ -11,9 +11,19 @@ enum CompilationStatus: string
     public function label(): string
     {
         return match ($this) {
-            self::PLAYABLE => 'Playable',
-            self::WORKING_ON_IT => 'Working on it',
-            self::NOT_PLAYABLE_YET => 'Not playable yet',
+            self::PLAYABLE => __('Playable'),
+            self::WORKING_ON_IT => __('Working on it'),
+            self::NOT_PLAYABLE_YET => __('Not playable yet'),
         };
+    }
+
+    // Use this in the status Select form component
+    public static function options(): array
+    {
+        return collect(self::cases())
+            ->mapWithKeys(fn (self $case) => [
+                $case->value => $case->label(),
+            ])
+            ->toArray();
     }
 }

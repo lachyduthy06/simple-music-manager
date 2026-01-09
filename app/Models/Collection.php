@@ -45,10 +45,10 @@ class Collection extends Model
             if (Auth::check()) {
                 $collection->user_id = auth()->id();
 
-                // Set initial sort value per instrument (MAX + 1)
-                $collection->sort = static::where('user_id', $collection->user_id)
+                // Set initial sort value per instrument to 0 or MAX(sort)+1
+                $collection->sort = (static::where('user_id', $collection->user_id)
                         ->where('instrument_id', $collection->instrument_id)
-                        ->max('sort') + 1;
+                        ->max('sort') ?? -1) + 1;
             }
         });
 

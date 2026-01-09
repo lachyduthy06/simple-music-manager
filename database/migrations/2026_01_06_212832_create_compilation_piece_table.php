@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('compilation_id')->constrained()->cascadeOnDelete();
             $table->foreignId('piece_id')->constrained()->cascadeOnDelete();
+            $table->integer('sort')->default(0);
             $table->timestamps();
+            $table->unique(['compilation_id', 'piece_id']);
         });
     }
 
