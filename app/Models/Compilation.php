@@ -48,6 +48,24 @@ class Compilation extends Model
         return round(($playable / $total) * 100);
     }
 
+    public function primaryInstrumentName(): ?string
+    {
+        // Ensure required relations are loaded to avoid N+1
+        $this->loadMissing('pieces.collection.instrument');
+
+        if ($this->pieces->isEmpty()) {
+            return null;
+        }
+
+        return $this->pieces
+            ->map(fn ($piece) => $piece->collection?->instrument?->name)
+            ->filter() // remove nulls
+            ->countBy() // count occurrences
+            ->sortDesc()
+            ->keys()
+            ->first();
+    }
+
     protected static function booted(): void
     {
         static::creating(function (Compilation $compilation) {

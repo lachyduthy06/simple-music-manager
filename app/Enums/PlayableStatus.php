@@ -5,15 +5,15 @@ namespace App\Enums;
 enum PlayableStatus: string
 {
     case PLAYABLE = 'playable';
-    case WORKING_ON_IT = 'workingOnIt';
-    case NOT_PLAYABLE_YET = 'notPlayableYet';
+    case WORKING_ON_IT = 'practicing';
+    case NOT_PLAYABLE_YET = 'unplayable';
 
     public function label(): string
     {
         return match ($this) {
             self::PLAYABLE => __('Playable'),
-            self::WORKING_ON_IT => __('Working on it'),
-            self::NOT_PLAYABLE_YET => __('Not playable yet'),
+            self::WORKING_ON_IT => __('Practicing'),
+            self::NOT_PLAYABLE_YET => __('Unplayable'),
         };
     }
 

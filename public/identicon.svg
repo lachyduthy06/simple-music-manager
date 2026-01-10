@@ -1,0 +1,17 @@
+<svg width="336" height="336" viewBox="0 0 336 336" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M252 84H84V252H252V84ZM168.238 143.272L116.619 116.619L143.272 168.238L116.619 219.856L168.238 193.204L219.856 219.856L193.204 168.238L219.856 116.619L168.238 143.272Z"
+        fill="#E5DBB2" />
+    <path d="M0 84H84L0 168V84Z" fill="#4C4C4C" />
+    <path d="M0 168L84 252H0V168Z" fill="#4C4C4C" />
+    <path d="M0 252H84L0 336V252Z" fill="#CCB866" />
+    <path d="M84 252L168 336H84V252Z" fill="#4C4C4C" />
+    <path d="M252 252V336H168L252 252Z" fill="#4C4C4C" />
+    <path d="M252 252L336 336H252V252Z" fill="#CCB866" />
+    <path d="M336 168V252H252L336 168Z" fill="#4C4C4C" />
+    <path d="M252 84H336V168L252 84Z" fill="#4C4C4C" />
+    <path d="M336 0V84H252L336 0Z" fill="#CCB866" />
+    <path d="M168 0H252V84L168 0Z" fill="#4C4C4C" />
+    <path d="M84 0H168L84 84V0Z" fill="#4C4C4C" />
+    <path d="M0 0H84V84L0 0Z" fill="#CCB866" />
+</svg>

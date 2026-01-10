@@ -61,8 +61,9 @@
     "Move to another collection": "In anderen Ordner verschieben",
     "Move up": "Nach oben",
     "No pieces available.": "Keine Stücke verfügbar.",
-    "Not playable yet": "Noch nicht spielbar",
+    "Unplayable": "Nicht spielbar",
     "Notes": "Notizen",
+    "Open Frontend": "Frontend öffnen",
     "Piece": "Stück",
     "Pieces": "Stücke",
     "Playable": "Spielbar",
@@ -70,5 +71,5 @@
     "Updated at": "Aktualisiert am",
     "User": "Benutzer",
     "Users": "Benutzer",
-    "Working on it": "In Arbeit"
+    "Practicing": "In Arbeit"
 }

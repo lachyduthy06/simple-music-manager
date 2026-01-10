@@ -1,10 +1,27 @@
 <?php
 
+use App\Livewire\Pages\CollectionPage;
+use App\Livewire\Pages\CompilationPage;
+use App\Livewire\Pages\CompilationsPage;
+use App\Livewire\Pages\HomePage;
+use App\Livewire\Pages\PiecePage;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    Log::info('Welcome page visited');
-    return view('welcome');
+Route::middleware('auth')->group(function () {
+    Route::get('/', HomePage::class)
+        ->name('home');
+
+    Route::get('/collections/{collection}', CollectionPage::class)
+        ->name('collections.show');
+
+    Route::get('/compilations', CompilationsPage::class)
+        ->name('compilations.index');
+
+    Route::get('/compilations/{compilation}', CompilationPage::class)
+        ->name('compilations.show');
+
+    Route::get('/pieces/{piece}', PiecePage::class)
+        ->name('pieces.show');
 });
 
 Route::get('/info', function () {
