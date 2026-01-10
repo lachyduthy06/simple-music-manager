@@ -4,9 +4,9 @@
         <div>
             <flux:heading size="xl" level="1">{{ $compilation->name }}</flux:heading>
             <flux:text class="mb-2 mt-2 text-base">
-                {{ $compilation->pieces_count }} {{ Str::plural('Piece', $compilation->pieces_count) }}
+                {{ $compilation->pieces_count }} {{ __(Str::plural('Piece', $compilation->pieces_count)) }}
                 |
-                {{ $compilation->playablePercentage() }}% playable
+                {{ $compilation->playablePercentage() }}% {{ __('playable') }}
             </flux:text>
         </div>
 

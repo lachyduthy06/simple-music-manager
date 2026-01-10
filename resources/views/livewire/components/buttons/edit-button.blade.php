@@ -1,5 +1,5 @@
 <flux:button
     href="{{ $link }}"
     icon:trailing="pencil">
-    Edit
+    {{ __('Edit') }}
 </flux:button>

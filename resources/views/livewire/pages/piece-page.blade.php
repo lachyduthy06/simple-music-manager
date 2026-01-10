@@ -1,10 +1,9 @@
 <div>
     <div class="flex items-start justify-between">
-        {{-- Heading + Status--}}
+        {{-- Heading --}}
         <div>
             <flux:heading size="xl" level="1">
                 {{ $piece->name }}
-                <livewire:components.badges.playable-status-badge :status="$piece->status"/>
             </flux:heading>
             <flux:text class="mb-6 mt-2 text-base">
                 {{ $piece->artist ?? 'Unknown Artist' }}
@@ -19,6 +18,8 @@
 
     {{-- Content --}}
     <div class="space-y-4">
+        {{-- Status --}}
+        <livewire:components.badges.playable-status-badge :status="$piece->status"/>
 
         {{-- Lyrics --}}
         @if($piece->lyrics_link)
@@ -43,7 +44,7 @@
         {{-- Notes --}}
         @if($piece->notes)
             <flux:text class="font-medium">
-                Notes:
+                {{ __('Notes') }}:
                 <flux:text inline variant="strong">
                     {{ $piece->notes }}
                 </flux:text>
@@ -52,12 +53,12 @@
 
         {{-- Collection --}}
         <flux:text class="font-medium">
-            Collection:
+            {{ __('Collection') }}:
             <flux:link href="{{ route('collections.show', $piece->collection) }}">
                 {{ $piece->collection->name }}
             </flux:link>
             <flux:text inline="true" class="text-gray-900 dark:text-gray-100">
-                ({{ $piece->collection->instrument->name }})
+                ({{ __($piece->collection->instrument->name) }})
             </flux:text>
         </flux:text>
     </div>

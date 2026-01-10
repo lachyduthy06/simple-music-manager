@@ -13,15 +13,15 @@
     <flux:sidebar sticky collapsible="mobile" class="bg-zinc-50 dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-700">
 
         <flux:sidebar.header>
-            <flux:sidebar.brand href="#" logo="/logo.svg" logo:dark="/logo-dark.svg" name="Simple Music Manager"/>
+            <flux:sidebar.brand href="#" logo="/logo.svg" logo:dark="/logo-dark.svg" name="{{ __('Simple Music Manager') }}"/>
             <flux:sidebar.collapse class="lg:hidden"/>
         </flux:sidebar.header>
 
         <flux:sidebar.nav>
-            <flux:sidebar.item icon="home" href="{{ route('home') }}">Home</flux:sidebar.item>
+            <flux:sidebar.item icon="home" href="{{ route('home') }}">{{ __('Home') }}</flux:sidebar.item>
             @foreach(\App\Models\Instrument::with(['collections' => fn ($q) => $q->withCount('pieces'),])->orderBy('sort')->get()
                 as $instrument)
-                <flux:sidebar.group expandable icon="folder" heading="{{ $instrument->name }}" class="grid">
+                <flux:sidebar.group expandable icon="folder" heading="{{ __($instrument->name) }}" class="grid">
                     @foreach($instrument->collections as $collection)
                         <flux:sidebar.item
                             badge="{{ $collection->pieces_count }}"
@@ -32,14 +32,16 @@
                 </flux:sidebar.group>
             @endforeach
             <flux:sidebar.item icon="queue-list" href="{{ route('compilations.index') }}">
-                Compilations
+                {{ __('Compilations') }}
             </flux:sidebar.item>
         </flux:sidebar.nav>
 
         <flux:sidebar.spacer/>
 
         <flux:sidebar.nav>
-            <flux:sidebar.item icon="cog-6-tooth" href="/admin">Manage</flux:sidebar.item>
+            <flux:sidebar.item icon="cog-6-tooth" href="/admin">
+                {{ __('Manage') }}
+            </flux:sidebar.item>
         </flux:sidebar.nav>
 
         <flux:dropdown position="top" align="start" class="max-lg:hidden">
@@ -47,7 +49,7 @@
             <flux:menu>
                 <flux:menu.item icon="arrow-right-start-on-rectangle"
                     wire:click.prevent="document.getElementById('logout-form').submit();">
-                        Logout
+                    {{ __('Logout') }}
                 </flux:menu.item>
             </flux:menu>
         </flux:dropdown>
@@ -61,7 +63,7 @@
             <flux:menu>
                 <flux:menu.item icon="arrow-right-start-on-rectangle"
                     wire:click.prevent="document.getElementById('logout-form').submit();">
-                    Logout
+                    {{ __('Logout') }}
                 </flux:menu.item>
             </flux:menu>
         </flux:dropdown>

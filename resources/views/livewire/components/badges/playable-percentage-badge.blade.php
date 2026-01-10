@@ -4,5 +4,5 @@
                             ? 'green'
                             : ($percentage > 50 ? 'yellow' : 'zinc') }}"
 >
-    {{ $percentage }}% Playable
+    {{ $percentage }}% {{ __('Playable') }}
 </flux:badge>

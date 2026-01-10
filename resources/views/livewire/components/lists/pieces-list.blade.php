@@ -12,20 +12,20 @@
 
                     {{-- Artist --}}
                     <div class="text-sm text-gray-500 dark:text-gray-400">
-                        {{ $piece->artist ?? 'Unknown Artist' }}
+                        {{ $piece->artist ?? __('Unknown Artist') }}
                     </div>
 
                     {{-- Collection / Instrument (optional) --}}
                     @if($showCollection)
                         <div class="text-sm text-gray-500 dark:text-gray-400">
-                            {{ $piece->collection->name }} ({{ $piece->collection->instrument->name }})
+                            {{ $piece->collection->name }} ({{ __($piece->collection->instrument->name) }})
                         </div>
                     @endif
 
                     {{-- Added X ago (optional) --}}
                     @if($showSince)
                         <div class="text-sm text-gray-500 dark:text-gray-400">
-                            Added {{ $piece->created_at->diffForHumans() }}
+                            {{ __('Added') }} {{ $piece->created_at->diffForHumans() }}
                         </div>
                     @endif
                 </div>
@@ -34,6 +34,6 @@
             </a>
         </li>
     @empty
-        <li class="py-4 text-gray-500 dark:text-gray-400">No pieces found.</li>
+        <li class="py-4 text-gray-500 dark:text-gray-400">{{ __('No pieces found.') }}</li>
     @endforelse
 </ul>

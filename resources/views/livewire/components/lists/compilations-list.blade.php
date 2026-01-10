@@ -10,14 +10,14 @@
 
                     {{-- Pieces Count --}}
                     <span class="text-sm text-gray-500 dark:text-gray-400">
-                            {{ $compilation->pieces_count }} {{ Str::plural('Piece', $compilation->pieces_count) }}
-                        </span>
+                        {{ $compilation->pieces_count }} {{ __(Str::plural('Piece', $compilation->pieces_count)) }}
+                    </span>
                 </div>
 
                 <livewire:components.badges.playable-percentage-badge :percentage="$compilation->playablePercentage()" />
             </a>
         </li>
     @empty
-        <li class="py-4 text-gray-500 dark:text-gray-400">No compilations found.</li>
+        <li class="py-4 text-gray-500 dark:text-gray-400">{{ __('No compilations found.') }}</li>
     @endforelse
 </ul>
