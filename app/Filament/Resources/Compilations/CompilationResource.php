@@ -2,21 +2,16 @@
 
 namespace App\Filament\Resources\Compilations;
 
-use App\Enums\CompilationStatus;
-use App\Filament\Resources\Compilations\Pages\ManageCompilations;
+use App\Filament\Resources\Compilations\Pages\CreateCompilation;
+use App\Filament\Resources\Compilations\Pages\EditCompilation;
+use App\Filament\Resources\Compilations\Pages\ListCompilations;
+use App\Filament\Resources\Compilations\Schemas\CompilationForm;
+use App\Filament\Resources\Compilations\Tables\CompilationsTable;
 use App\Models\Compilation;
-use App\Models\Piece;
 use BackedEnum;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class CompilationResource extends Resource
@@ -44,83 +39,27 @@ class CompilationResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema
-            ->components([
-                TextInput::make('name')->label(__('Name'))->required()->maxLength(255),
-
-                Select::make('status')
-                    ->label(__('Status'))
-                    ->options(CompilationStatus::options())
-                    ->default(CompilationStatus::NOT_PLAYABLE_YET->value)
-                    ->selectablePlaceholder(false)
-                    ->required(),
-
-                Select::make('pieces')
-                    ->label(__('Pieces'))
-                    ->relationship(name: 'pieces', titleAttribute: 'name')
-                    ->multiple()
-                    ->reorderable()
-                    ->searchable()
-                    ->preload()
-                    ->noOptionsMessage('No pieces available.')
-                    ->getOptionLabelFromRecordUsing(function (Piece $piece) {
-                        // Ensure collection and instrument are loaded
-                        $piece = $piece->loadMissing('collection.instrument');
-
-                        $instrumentName = $piece->collection?->instrument?->name ?? 'No instrument';
-                        $collectionName = $piece->collection?->name ?? 'No collection';
-
-                        return "{$piece->name} [{$instrumentName}, {$collectionName}]";
-                    })
-                    ->saveRelationshipsUsing(function (Compilation $record, array $state) {
-                        $syncData = [];
-                        foreach ($state as $index => $pieceId) {
-                            $syncData[$pieceId] = ['sort' => $index];
-                        }
-                        $record->pieces()->sync($syncData);
-                    }),
-            ]);
+        return CompilationForm::configure($schema);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
-            ->reorderable('sort')
-            ->defaultSort('sort')
-            ->columns([
-                TextColumn::make('name')->label(__('Name'))->searchable()->sortable(),
-                TextColumn::make('status')
-                    ->label(__('Status'))
-                    ->badge()
-                    ->formatStateUsing(fn (CompilationStatus $state) => $state->label())
-                    ->color(fn (CompilationStatus $state) => match ($state) {
-                        CompilationStatus::PLAYABLE => 'success',
-                        CompilationStatus::WORKING_ON_IT => 'warning',
-                        CompilationStatus::NOT_PLAYABLE_YET => 'gray',
-                    })
-                    ->sortable(),
-                TextColumn::make('pieces_count')->label(__('Pieces'))->counts('pieces'),
-                TextColumn::make('created_at')->label(__('Created at'))->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')->label(__('Updated at'))->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
-            ])
-            ->recordActions([
-                EditAction::make(),
-                DeleteAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+        return CompilationsTable::configure($table);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => ManageCompilations::route('/'),
+            'index' => ListCompilations::route('/'),
+            'create' => CreateCompilation::route('/create'),
+            'edit' => EditCompilation::route('/{record}/edit'),
         ];
     }
 }

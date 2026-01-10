@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Collections\Resources\Pieces\Schemas;
 
+use App\Enums\CompilationStatus;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
@@ -16,6 +18,12 @@ class PieceForm
                 TextInput::make('artist')->label(__('Artist'))->maxLength(255),
                 TextInput::make('lyrics_link')->label(__('Lyrics Link')),
                 TextInput::make('tutorial_link')->label(__('Tutorial Link')),
+                Select::make('status')
+                    ->label(__('Status'))
+                    ->options(CompilationStatus::options())
+                    ->default(CompilationStatus::NOT_PLAYABLE_YET->value)
+                    ->selectablePlaceholder(false)
+                    ->required(),
                 Textarea::make('notes')->label(__('Notes'))->columnSpanFull(),
             ]);
     }

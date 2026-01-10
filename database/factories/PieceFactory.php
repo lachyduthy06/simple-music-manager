@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\CompilationStatus;
 use App\Models\Collection;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,6 +25,13 @@ class PieceFactory extends Factory
             'lyrics_link' => fake()->optional(0.8)->url(),
             'tutorial_link' => fake()->optional()->url(),
             'notes' => fake()->optional()->paragraph(),
+            'status' => fake()->randomElement([
+                CompilationStatus::PLAYABLE->value,
+                CompilationStatus::PLAYABLE->value,
+                CompilationStatus::PLAYABLE->value, // bias towards playable
+                CompilationStatus::WORKING_ON_IT->value,
+                CompilationStatus::NOT_PLAYABLE_YET->value,
+            ]),
             'sort' => fake()->numberBetween(0, 100),
         ];
     }

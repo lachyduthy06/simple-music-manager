@@ -3,17 +3,17 @@
 namespace App\Filament\Resources\Compilations\Pages;
 
 use App\Filament\Resources\Compilations\CompilationResource;
-use Filament\Actions\CreateAction;
-use Filament\Resources\Pages\ManageRecords;
+use Filament\Actions\DeleteAction;
+use Filament\Resources\Pages\EditRecord;
 
-class ManageCompilations extends ManageRecords
+class EditCompilation extends EditRecord
 {
     protected static string $resource = CompilationResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make()->label(__('Create')),
+            DeleteAction::make(),
         ];
     }
 }

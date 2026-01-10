@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Collections\Resources\Pieces\Tables;
 
+use App\Enums\CompilationStatus;
 use App\Models\Collection;
 use App\Models\Piece;
 use Filament\Actions\Action;
@@ -35,6 +36,16 @@ class PiecesTable
                     )
                     ->limit(25)
                     ->searchable(),
+                TextColumn::make('status')
+                    ->label(__('Status'))
+                    ->badge()
+                    ->formatStateUsing(fn (CompilationStatus $state) => $state->label())
+                    ->color(fn (CompilationStatus $state) => match ($state) {
+                        CompilationStatus::PLAYABLE => 'success',
+                        CompilationStatus::WORKING_ON_IT => 'warning',
+                        CompilationStatus::NOT_PLAYABLE_YET => 'gray',
+                    })
+                    ->sortable(),
                 TextColumn::make('created_at')->label(__('Created at'))->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')->label(__('Updated at'))->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])

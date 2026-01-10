@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CompilationStatus;
 use App\Models\Scopes\OwnedByUserScope;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -36,6 +37,19 @@ class Collection extends Model
     public function pieces(): HasMany
     {
         return $this->hasMany(Piece::class);
+    }
+
+    public function playablePercentage(): float
+    {
+        $total = $this->pieces()->count();
+
+        if ($total === 0) {
+            return 0;
+        }
+
+        $playable = $this->pieces()->where('status', CompilationStatus::PLAYABLE)->count();
+
+        return round(($playable / $total) * 100);
     }
 
     protected static function booted(): void

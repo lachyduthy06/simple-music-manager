@@ -20,12 +20,7 @@ class Compilation extends Model
     protected $fillable = [
         'user_id',
         'name',
-        'status',
         'sort',
-    ];
-
-    protected $casts = [
-        'status' => CompilationStatus::class,
     ];
 
     public function user(): BelongsTo
@@ -38,6 +33,19 @@ class Compilation extends Model
         return $this->belongsToMany(Piece::class)
             ->withPivot('sort')
             ->orderByPivot('sort');
+    }
+
+    public function playablePercentage(): float
+    {
+        $total = $this->pieces()->count();
+
+        if ($total === 0) {
+            return 0;
+        }
+
+        $playable = $this->pieces()->where('status', CompilationStatus::PLAYABLE)->count();
+
+        return round(($playable / $total) * 100);
     }
 
     protected static function booted(): void

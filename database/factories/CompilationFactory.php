@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Enums\CompilationStatus;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,7 +20,6 @@ class CompilationFactory extends Factory
         return [
             'user_id' => User::factory(),
             'name' => fake()->words(2, true),
-            'status' => fake()->randomElement(CompilationStatus::cases())->value,
             'sort' => fake()->numberBetween(0, 100),
         ];
     }

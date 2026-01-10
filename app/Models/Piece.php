@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CompilationStatus;
 use App\Models\Scopes\OwnedByUserViaCollectionScope;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,8 +24,18 @@ class Piece extends Model
         'lyrics_link',
         'tutorial_link',
         'notes',
+        'status',
         'sort',
     ];
+
+    protected $casts = [
+        'status' => CompilationStatus::class,
+    ];
+
+    public function isPlayable(): bool
+    {
+        return $this->status === CompilationStatus::PLAYABLE;
+    }
 
     public function collection(): BelongsTo
     {
