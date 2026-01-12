@@ -4,6 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <title>{{ $title ?? 'Simple Music Manager' }}</title>
     @vite('resources/css/app.css')
     @fluxAppearance
@@ -13,7 +19,7 @@
     <flux:sidebar sticky collapsible="mobile" class="bg-zinc-50 dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-700">
 
         <flux:sidebar.header>
-            <flux:sidebar.brand href="#" logo="/logo.svg" logo:dark="/logo-dark.svg" name="{{ __('Simple Music Manager') }}"/>
+            <flux:sidebar.brand href="#" logo="/favicon.svg" logo:dark="/favicon-dark.svg" name="{{ __('Simple Music Manager') }}"/>
             <flux:sidebar.collapse class="lg:hidden"/>
         </flux:sidebar.header>
 

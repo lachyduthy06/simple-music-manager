@@ -9,6 +9,23 @@ The Simple Music Manager is open to contributions
 
 Edit them easily with [draw.io](https://www.drawio.com/).
 
+## Add a proper Logo
+
+The current logo is made with the [RealFaviconGenerator's Logo maker](https://realfavicongenerator.net/logo-maker)
+with the below settings:
+
+- Text: SMM
+- Size: slider at about 75%
+- Color & Stroke: #ffffff (white) (dark: #000000)
+- Background:
+  - Color #1: #2e3f4e (dark: #ffffff)
+  - Color #2: #111111 (dark: #d2d2be)
+
+> For the normal (light) version, I downloaded the complete favicon package, for the dark version just the single SVG.
+
+Adding a serious application logo would be neat though - if you got one, you could run it through the RealFaviconGenerator,
+replace the current logo files and submit the pull request.
+
 ## Adding another Language
 
 At the time of writing, the there's two languages available: English and German.<br>

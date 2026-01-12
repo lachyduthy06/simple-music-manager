@@ -57,6 +57,8 @@ class AdminPanelProvider extends PanelProvider
             ->resourceCreatePageRedirect('index')
             ->resourceEditPageRedirect('index')
             ->viteTheme('resources/css/filament/main/theme.css')
+            ->brandLogo('/favicon.svg')
+            ->darkModeBrandLogo('/favicon-dark.svg')
             ->userMenuItems([
                 Action::make('openFrontend')
                     ->label(__('Open Frontend'))
