@@ -64,17 +64,20 @@ class User extends Authenticatable implements FilamentUser
 
     public function instruments(): HasMany
     {
-        return $this->hasMany(Instrument::class);
+        return $this->hasMany(Instrument::class)
+            ->orderBy('sort');
     }
 
     public function collections(): HasMany
     {
-        return $this->hasMany(Collection::class);
+        return $this->hasMany(Collection::class)
+            ->orderBy('sort');
     }
 
     public function compilations(): HasMany
     {
-        return $this->hasMany(Compilation::class);
+        return $this->hasMany(Compilation::class)
+            ->orderBy('sort');
     }
 
     public function pieces(): HasManyThrough

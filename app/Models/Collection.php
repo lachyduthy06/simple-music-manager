@@ -36,7 +36,8 @@ class Collection extends Model
 
     public function pieces(): HasMany
     {
-        return $this->hasMany(Piece::class);
+        return $this->hasMany(Piece::class)
+            ->orderBy('sort');
     }
 
     public function playablePercentage(): float

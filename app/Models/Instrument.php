@@ -29,7 +29,8 @@ class Instrument extends Model
 
     public function collections(): HasMany
     {
-        return $this->hasMany(Collection::class);
+        return $this->hasMany(Collection::class)
+            ->orderBy('sort');
     }
 
     protected static function booted(): void
